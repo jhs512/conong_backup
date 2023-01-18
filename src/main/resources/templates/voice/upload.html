@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/usrLayout.html}">
+
+<head>
+    <title>녹음</title>
+</head>
+
+<body>
+<main layout:fragment="main">
+    <section class="section section-login flex-grow flex flex-col items-center justify-center">
+
+        <div class="max-w-md w-full px-2 pt-4">
+            <h1 class="font-bold text-lg flex mb-2">
+                <i class="fa-solid fa-upload text-icon"></i>
+                <span class="ml-[2px]">
+                    업로드
+                </span>
+            </h1>
+
+            <script>
+                let UploadForm__submitDone = false;
+
+                function UploadForm__submit() {
+                    const form = document.upload_form;
+
+                    if (UploadForm__submitDone) return;
+
+                    if (form.playableGenFieldFile.value.length == 0) {
+                        alert('위 버튼을 눌러서 녹음/녹화를 먼저 진행해주세요.');
+                        form.playableGenFieldFile.focus();
+                        return;
+                    }
+
+                    UploadForm__submitDone = true;
+                    form.submit();
+                }
+            </script>
+
+            <form name="upload_form" th:action method="post" enctype="multipart/form-data"
+                  onsubmit="UploadForm__submit(); return false;">
+
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">녹음시작</span>
+                    </label>
+                    <input onchange="UploadForm__submit();" capture type="file" name="playableGenFieldFile" accept="audio/*"
+                           class="file-input file-input-bordered file-input-primary"
+                    />
+                </div>
+
+                <div class="grid grid-cols-2 mt-2 gap-2">
+                    <a href="/voice/myList" class="btn btn-secondary btn-outline">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                        <span class="ml-[2px]">
+                            내 기록 보러가기
+                        </span>
+                    </a>
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa-solid fa-upload"></i>
+                        <span class="ml-[2px]">
+                            업로드
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

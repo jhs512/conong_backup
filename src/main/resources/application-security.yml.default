@@ -1,0 +1,13 @@
+---
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            clientId: __clientId__
+custom:
+  deploy:
+    tomcat:
+      pass: __pass__
+      version: 1

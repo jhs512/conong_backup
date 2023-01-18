@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/usrLayout.html}">
+
+<head>
+    <title>내 기록</title>
+</head>
+
+<body>
+<main layout:fragment="main">
+    <section class="section section-upload container mx-auto">
+
+        <div class="w-full px-2 pt-4">
+
+            <h1 class="font-bold text-lg flex mb-2">
+                <i class="fa-solid fa-clipboard-list text-icon"></i>
+                <span class="ml-[2px]">
+                    내 기록
+                </span>
+            </h1>
+
+            <ul>
+                <li th:each="voice : ${voices}" class="py-2">
+                    <div>
+                        <div class="badge badge-primary" th:text="${voice.id}"></div>
+                        <div class="badge" th:text="${voice.playableFieldGenFile.sizeHr}"></div>
+
+                        <audio controls class="w-full mt-2">
+                            <source th:src="${voice.getPlayableFieldGenFile.url}">
+                            Your browser does not support the audio tag.
+                        </audio>
+                    </div>
+
+                    <div class="mt-2">
+                        <a onclick="if ( confirm('정말로 삭제하시겠습니까?') ) $(this).next().submit();" href="javascript:;" class="btn btn-sm btn-secondary">
+                            <i class="fa-solid fa-trash"></i>
+                            <span class="ml-2">삭제</span>
+                        </a>
+
+                        <form th:action="@{|${voice.id}}" th:method="DELETE" hidden></form>
+                    </div>
+
+                    <hr class="mt-2">
+                </li>
+            </ul>
+
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

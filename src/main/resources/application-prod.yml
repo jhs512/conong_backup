@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://${prodDbIp:172.17.0.1}:3306/conong__prod?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    username: ${prodDbId:lldjlocal}
+    password: ${prodDbPw:1234}
+  jpa:
+    hibernate:
+      # ddl-auto: create
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+        use_sql_comments: false
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            redirect-uri: https://cono.oa.gg/login/oauth2/code/kakao
+  data:
+    redis:
+      host: 172.17.0.1
+logging:
+  level:
+    root: info
+    com.ll.exam.conong: info
+    org.hibernate.type.descriptor.sql: info
+custom:
+  genFileDirParentPath: /storage/conong
+  genDirName: gen
+  site:
+    name: 코노
+    baseUrl: "https://cono.oa.gg"

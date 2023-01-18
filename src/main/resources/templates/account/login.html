@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/usrLayout.html}">
+
+<head>
+    <title>로그인</title>
+</head>
+
+<body>
+<main layout:fragment="main">
+    <section class="section section-login flex-grow flex flex-col items-center justify-center">
+
+        <div class="max-w-md w-full px-2 pt-4">
+            <h1 class="font-bold text-lg flex mb-2">
+                <i class="fa-solid fa-right-to-bracket text-icon"></i>
+                <span class="ml-[2px]">
+                    로그인
+                </span>
+            </h1>
+
+            <a href="/oauth2/authorization/kakao">
+                <i class="fa-solid fa-comments text-icon"></i>
+                카카오 로그인
+            </a>
+
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

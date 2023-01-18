@@ -1,0 +1,24 @@
+server:
+  port: 8010
+spring:
+  thymeleaf:
+    cache: false
+    prefix: file:src/main/resources/templates/
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/conong__dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+custom:
+  genFileDirParentPath: c:/temp/conong
+  genDirName: gen
+  site:
+    name: 사이트
+    baseUrl: "http://localhost:8010"
